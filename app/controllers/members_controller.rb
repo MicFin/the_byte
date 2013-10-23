@@ -1,0 +1,52 @@
+class MembersController < ApplicationController
+before_action :set_member, only: [:show, :edit, :update, :destroy]
+
+
+def show
+end
+
+def index
+  binding.pry
+  @member = Member.all
+end
+
+def create
+  @member = Member.new(member_params)
+  if @member.save
+    redirect_to @member
+  else
+    render action: 'new'
+  end
+end
+
+def new
+  @member = Member.new
+end
+
+def edit
+end
+
+def update
+  if @member.update(member_params)
+    redirect_to @member 
+  else
+    render action: 'edit'
+  end
+end
+
+def destroy
+  @member.destroy
+  redirect_to members_url 
+end
+
+private
+
+def set_member
+@member = Member.find(params[:id])
+end
+
+def member_params
+  params.require(:member).permit(:name, :uder_id, :allergy_ids => [])
+end
+
+end

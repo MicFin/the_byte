@@ -1,0 +1,9 @@
+<h1>Dinner Guest</h1>
+
+<div class="member">
+	<h2><%= @member.name %></h2>
+		<% @member.allegies.each do |allergy| %>
+		<%= link_to allergy.name, allergy %>
+	</div>
+
+	<%= link_to "back to dinner guests", members_url %>

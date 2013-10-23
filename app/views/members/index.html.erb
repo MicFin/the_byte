@@ -1,0 +1,12 @@
+<h1>RightByte</h1>
+
+<h3><%= link_to "Add new dinner guest", new_member_url %> </h3>
+<div class="member">
+	<%@members.each do |member| %>
+	<ul>
+		<li><%= link_to member.name, member %>
+        <li><%= link_to 'Edit', edit_member_path(member) %></li>
+        <li><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+	</ul>
+	<%end%>
+</div>
