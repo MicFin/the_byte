@@ -23,6 +23,8 @@ Diet.create(name: "pescetarian")
 Diet.create(name: "vegan")
 Diet.create(name: "vegetarian")
 
+
+
 # American, Italian, Asian, Mexican, Southern & Soul Food, French, Southwestern, Barbecue, Indian, Chinese, Cajun & Creole, English, Mediterranean, Greek, Spanish, German, Thai, Moroccan, Irish, Japanese, Cuban, Hawaiin, Swedish, Hungarian, Portugese
 
 # Main Dishes, Desserts, Side Dishes, Lunch and Snacks, Appetizers, Salads, Breads, Breakfast and Soups, Beverages, Condiments and Sauces, Cocktails

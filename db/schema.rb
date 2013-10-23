@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20131023181155) do
     t.string   "name"
     t.integer  "age"
     t.string   "gender"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

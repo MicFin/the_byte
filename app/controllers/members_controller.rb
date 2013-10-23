@@ -6,13 +6,13 @@ def show
 end
 
 def index
-  binding.pry
   @member = Member.all
 end
 
 def create
   @member = Member.new(member_params)
   if @member.save
+    current_user.members << @member
     redirect_to @member
   else
     render action: 'new'
@@ -46,7 +46,7 @@ def set_member
 end
 
 def member_params
-  params.require(:member).permit(:name, :uder_id, :allergy_ids => [])
+  params.require(:member).permit(:name, :user_id, :allergy_ids => [])
 end
 
 end
