@@ -46,7 +46,7 @@ def set_member
 end
 
 def member_params
-  params.require(:member).permit(:name, :user_id, :xingredlist, :allergy_ids => [], :diet_ids => [])
+  params.require(:member).permit(:name, :user_id, :xingredlist, :age, :gender, :allergy_ids => [], :diet_ids => [])
 end
 
 end

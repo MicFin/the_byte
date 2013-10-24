@@ -2,10 +2,11 @@
 
 
 <h2><%= @member.name %></h2>
-
+<h4>Age: <%= @member.age %></br> Gender: <%= @member.gender %></h4>
 <div class="allergies">
 <h3>Allergies:</h3>
-	<ul class="allergy-list"><% @member.allergies.each do |allergy| %>
+	<ul class="allergy-list">
+	<% @member.allergies.each do |allergy| %>
 	<li><%= allergy.name %></li>
 		<%#= link_to allergy.name, allergy %>
 	<% end %>
@@ -14,7 +15,8 @@
 
 <div class="diets">
 <h3>Dietery Restrictions:</h3>
-	<ul class="diet-list"><% @member.diets.each do |diet| %>
+	<ul class="diet-list">
+	<% @member.diets.each do |diet| %>
 	<li><%= diet.name %></li>
 		<%#= link_to allergy.name, allergy %>
 	<% end %>

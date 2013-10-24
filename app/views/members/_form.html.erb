@@ -5,14 +5,24 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="age-field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age, min: 1, max: 130 %>
+  </div>
+
+ <div class="gender-field">
+    <%= f.label :gender %>
+    <%=f.select( :gender, options_for_select([["M", "Male"],["F","Female"]]))%>
+  </div>
+
   <div class="allergy-field">
     <%= f.label :allergy %>
-    <%=collection_check_boxes(:member, :allergy_ids, Allergy.all, :id, :name, prompt: true)%>
+    <%=collection_check_boxes(:member, :allergy_ids, Allergy.order(:name), :id, :name, prompt: true)%>
   </div>
 
   <div class="diet-field">
     <%= f.label :diet %>
-    <%=collection_check_boxes(:member, :diet_ids, Diet.all, :id, :name, prompt: true)%>
+    <%=collection_check_boxes(:member, :diet_ids, Diet.order(:name), :id, :name, prompt: true)%>
   </div>
 
   <div class="excluded-field">
