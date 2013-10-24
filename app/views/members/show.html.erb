@@ -5,29 +5,42 @@
 <h4>Age: <%= @member.age %></br> Gender: <%= @member.gender %></h4>
 <div class="allergies">
 <h3>Allergies:</h3>
-	<ul class="allergy-list">
-	<% @member.allergies.each do |allergy| %>
-	<li><%= allergy.name %></li>
-		<%#= link_to allergy.name, allergy %>
+	<% if !@member.allergies.empty? %>
+		<ul class="allergy-list">
+			<% @member.allergies.each do |allergy| %>
+			<li><%= allergy.name %></li>
+			<%#= link_to allergy.name, allergy %>
+			<% end %>
+		</ul>
+	<% else %>
+		<h5> None </h5>
 	<% end %>
-	</ul>
 </div>
 
 <div class="diets">
 <h3>Dietery Restrictions:</h3>
-	<ul class="diet-list">
-	<% @member.diets.each do |diet| %>
-	<li><%= diet.name %></li>
+	<% if !@member.diets.empty? %>
+		<ul class="diet-list">
+			<% @member.diets.each do |diet| %>
+			<li><%= diet.name %></li>
 		<%#= link_to allergy.name, allergy %>
+			<% end %>
+		</ul>
+	<% else %>
+		<h5>None</h5>
 	<% end %>
-	</ul>
 </div>
 
 <div class="xingredlist">
 <h3>Excluded Ingredients:</h3>
-	<ul class="xingredlist-list">
-	<li><%= @member.xingredlist %></li>
-	</ul>
+	<% if !@member.xingredlist.empty? %>
+		<ul class="xingredlist-list">
+			<li><%= @member.xingredlist.capitalize %></li>
+		</ul>
+	<% else %>
+		<h5>None</h5>
+	<% end %>
 </div>
-
+<div class="back">
 	<%= link_to "back to your family and guests", members_url %>
+</div>
