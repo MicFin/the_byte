@@ -1,12 +1,21 @@
 <h1>RightByte</h1>
 
+<%if current_user %>
 <h3><%= link_to "Add new dinner guest", new_member_url %> </h3>
 <div class="member">
-	<%@members.each do |member| %>
-	<ul>
-		<li><%= link_to member.name, member %>
-        <li><%= link_to 'Edit', edit_member_path(member) %></li>
-        <li><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-	</ul>
-	<%end%>
+	<% if current_user.members && !current_user.members.empty? %>
+		<%current_user.members.each do |member| %>
+		<ul>
+			<li><%= link_to member.name, member %></li>
+      <li><%= link_to 'Edit', edit_member_path(member) %></li>
+      <li><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+		<%end%>
+	<% else%>
+		Add people to your table
+	<% end %>
+<% else %>
+Please log in to start cookin'
+<% end %>
+
 </div>

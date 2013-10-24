@@ -4,7 +4,9 @@ class CreateMembers < ActiveRecord::Migration
       t.string :name
       t.integer :age
       t.string :gender
+      t.text :xingredlist
       t.belongs_to :user
+
       
       t.timestamps
     end

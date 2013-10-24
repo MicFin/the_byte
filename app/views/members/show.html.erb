@@ -1,10 +1,31 @@
 <h1>Dinner Guest</h1>
 
 
-	<h2><%= @member.name %></h2>
-		<% @member.allergies.each do |allergy| %>
-		<%= allergy.name %>
-		<%#= link_to allergy.name, allergy %>
-		<% end %>
+<h2><%= @member.name %></h2>
 
-	<%#= link_to "back to dinner guests", members_url %>
+<div class="allergies">
+<h3>Allergies:</h3>
+	<ul class="allergy-list"><% @member.allergies.each do |allergy| %>
+	<li><%= allergy.name %></li>
+		<%#= link_to allergy.name, allergy %>
+	<% end %>
+	</ul>
+</div>
+
+<div class="diets">
+<h3>Dietery Restrictions:</h3>
+	<ul class="diet-list"><% @member.diets.each do |diet| %>
+	<li><%= diet.name %></li>
+		<%#= link_to allergy.name, allergy %>
+	<% end %>
+	</ul>
+</div>
+
+<div class="xingredlist">
+<h3>Excluded Ingredients:</h3>
+	<ul class="xingredlist-list">
+	<li><%= @member.xingredlist %></li>
+	</ul>
+</div>
+
+	<%= link_to "back to your family and guests", members_url %>

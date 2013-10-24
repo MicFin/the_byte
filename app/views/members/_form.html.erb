@@ -1,14 +1,25 @@
 <%= form_for(@member) do |f| %>
 
-  <div class="field">
+  <div class="name-field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="allergy-field">
     <%= f.label :allergy %>
     <%=collection_check_boxes(:member, :allergy_ids, Allergy.all, :id, :name, prompt: true)%>
   </div>
+
+  <div class="diet-field">
+    <%= f.label :diet %>
+    <%=collection_check_boxes(:member, :diet_ids, Diet.all, :id, :name, prompt: true)%>
+  </div>
+
+  <div class="excluded-field">
+    <%= f.label :Excluded_Ingredients%><br>
+    <%= f.text_field :xingredlist %>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>

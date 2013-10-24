@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131023181155) do
+ActiveRecord::Schema.define(version: 20131023221721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,17 +37,21 @@ ActiveRecord::Schema.define(version: 20131023181155) do
     t.datetime "updated_at"
   end
 
-  create_table "excluded_ingredients", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "diets_members", id: false, force: true do |t|
+    t.integer "diet_id"
+    t.integer "member_id"
   end
+
+  add_index "diets_members", ["diet_id"], name: "index_diets_members_on_diet_id", using: :btree
+  add_index "diets_members", ["member_id", "diet_id"], name: "index_diets_members_on_member_id_and_diet_id", using: :btree
+  add_index "diets_members", ["member_id"], name: "index_diets_members_on_member_id", using: :btree
 
   create_table "members", force: true do |t|
     t.string   "name"
     t.integer  "age"
     t.string   "gender"
     t.integer  "user_id"
+    t.text     "xingredlist"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

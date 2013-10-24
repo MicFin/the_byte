@@ -1,5 +1,5 @@
 TheByte::Application.routes.draw do
-  root to: "home#index"
+  root to: "members#index"
 
   devise_for :users
   resources :members
