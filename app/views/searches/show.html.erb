@@ -1,26 +1,27 @@
 <% @search_results.each do |recipe| %>
 <div class ="recipe-result">
+
 	<h2><%= recipe.name %></h2>
-	<img src="<%= recipe.response["smallImageUrls"][0]%>"/>
+
+	<%#<img src="<%=Yummly.find("#{recipe.id}").response["images"].first["hostedLargeUrl"]%>"/>
+
 	<div class="cook-time"> 
-		Time: <%= recipe.response["totalTimeInSeconds"]%>
+		Time: <%= (recipe.response["totalTimeInSeconds"]).to_i/60%>mins
 	</div>
 	<div class="rating">
 		Rating: <%= recipe.response["rating"] %>
 	</div>
-	<div class="ingredients">
-	Ingredients: </br>
-		<% recipe.response["ingredients"].each do |ingredient| %>
-		<%= ingredient %></br>
-		<% end %>	
-	</div>
+
 	<div class="recipe-_original-link">
-		<a href="<%=Yummly.find("#{recipe.id}").response["source"]["sourceRecipeUrl"]%>">Source Link</a> 
+		<%#<a href="<%=Yummly.find("#{recipe.id}").response["source"]["sourceRecipeUrl"]%>">Source Link</a> 
 	</div>
-	<div class="recipe-link">
+
+	<div class="ingredients-details">
 		<%# Yummly.find("#{recipe.id}").response["ingredientLines"].each do |line|%>
-	 	<%#= line %> </br>
+	 	<%#= line %> </br> 
 	 	<%# end %>
 	</div>
+
 </div>
+
 <% end %>

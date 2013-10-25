@@ -1,13 +1,36 @@
 </br>
 <%= form_tag(searches_path) do %>
 
-<% current_user.members.each do |member| %>
-<%= check_box_tag(member.name) %>
-<%= label_tag(member.name, "#{member.name}") %>
+<%if current_user %>
+	<div class="member-search-select">
+		<% current_user.members.each do |member| %>
+		<%= check_box_tag(member.name) %>
+		<%= label_tag(member.name, "#{member.name}") %>
+		<% end %>
+	</div>
 <% end %>
 
+<div class="allergy-search-select">
+	<% Allergy.all.each do |allergy| %>
+	<%= check_box_tag(allergy.name) %>
+	<%= label_tag(allergy.name, "#{allergy.name}") %>
+	<% end %>
+</div>
 
+<div class="diet-search-select">
+	<% Diet.all.each do |diet| %>
+	<%= check_box_tag(diet.name) %>
+	<%= label_tag(diet.name, "#{diet.name}") %>
+	<% end %>
+</div>
 
+<div class="course-search-select">
+	<% $courses = ["Main Dishes", "Desserts", "Side Dishes", "Lunch and Snacks", "Appetizers", "Salads", "Breads", "Breakfast and Soups", "Beverages", "Condiments and Sauces", "Cocktails"] %>
+	<% $courses.each do |course| %>
+	<%= check_box_tag("#{course}") %>
+	<%= label_tag("#{course}", "#{course}") %>
+	<% end %>
+</div>
 
 <%= text_field_tag 'search' %>
 

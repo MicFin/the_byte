@@ -1,10 +1,10 @@
 <h1>RightByte</h1>
 
 
-
+<h3><%= link_to "Search", new_search_path %> </h3>
 
 <%if current_user %>
-<h3><%= link_to "Search", new_search_path %> </h3>
+
 <h3><%= link_to "Add new dinner guest", new_member_url %> </h3>
 <div class="member">
 	<% if current_user.members && !current_user.members.empty? %>
