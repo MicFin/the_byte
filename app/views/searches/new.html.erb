@@ -1,0 +1,15 @@
+</br>
+<%= form_tag(searches_path) do %>
+
+<% current_user.members.each do |member| %>
+<%= check_box_tag(member.name) %>
+<%= label_tag(member.name, "#{member.name}") %>
+<% end %>
+
+
+
+
+<%= text_field_tag 'search' %>
+
+<div><%= submit_tag 'Search' %></div>
+<% end -%>

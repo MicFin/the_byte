@@ -7,7 +7,6 @@ class MembersController < ApplicationController
 
   def index
     @members = Member.all
-    @member = Member.new
   end
 
   def create
@@ -39,6 +38,7 @@ class MembersController < ApplicationController
     @member.destroy
     redirect_to members_url 
   end
+
 
   private
 
