@@ -1,10 +1,7 @@
-class Member < ActiveRecord::Base
+class Search < ActiveRecord::Base
   belongs_to :user
-  has_and_belongs_to_many :allergies
-  has_and_belongs_to_many :diets
-  validates :name, presence: true
-  validates :age, presence: true 
   # add error  messagse for not valid inputs
+
 
   # def self.yummly_search_criteria
   #   @allergy_criteria = Array.new
@@ -30,8 +27,8 @@ class Member < ActiveRecord::Base
   #   # results in format for API search
   # end
 
-  # def self.new(yummly_search_criteria)
+  # def self.new
   #   return Yummly.search(yummly_search_criteria)
   # end
-  
+
 end

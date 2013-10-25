@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 .env
-.DS_STORE
+.DS_Store
 /public/system
