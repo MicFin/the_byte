@@ -43,11 +43,11 @@ class SearchesController < ApplicationController
   @yummly_search_criteria[:allowedAllergy] = @allergy_criteria.uniq
   @yummly_search_criteria[:allowedDiet] = @diet_criteria.uniq
   @yummly_search_criteria[:requirePictures] = true
-binding.pry
   # returns hash ready for API 
 
-# Yummly.search(@item_criteria, @yummly_search_criteria)
-      binding.pry
+@search_results = Yummly.search(@item_criteria, @yummly_search_criteria)
+binding.pry
+render :show
 end
 
 private
