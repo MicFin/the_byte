@@ -1,6 +1,7 @@
 <h1>RightByte</h1>
 <h1>CookBooks Index</h1>
 
+<h3><%= link_to "Add new cookbook", new_cookbook_url %> </h3>
 <% if current_user.cookbooks && !current_user.cookbooks.empty? %>
 		<%current_user.cookbooks.each do |cookbook| %>
 		<ul>
