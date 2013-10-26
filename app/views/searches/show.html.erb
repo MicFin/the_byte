@@ -9,7 +9,8 @@
 	<img src="<%=image%>"/>
 
 	<div class="cook-time"> 
-		Time: <%= (recipe.response["totalTimeInSeconds"]).to_i/60%>mins
+		<%= time = (recipe.response["totalTimeInSeconds"]).to_i / 60 %>
+		Time: <%= time %> mins
 	</div>
 	<div class="rating">
 		<% rating = recipe.response["rating"] %>
@@ -17,8 +18,8 @@
 	</div>
 
 	<div class="recipe-_original-link">
-		<% original_link = found_recipe.response["source"]["sourceRecipeUrl"] %>
-		<a href="<%=original_link%>">View the recipe</a> 
+		<% link = found_recipe.response["source"]["sourceRecipeUrl"] %>
+		<a href="<%=link%>">View the recipe</a> 
 	</div>
 
 	<div class="ingredients-details">
@@ -31,7 +32,7 @@
 
 	<div class="add-to-cookbook">
 
-		<%= button_to 'create_recipe', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating, image: image, ingredient_list: ingredient_string, link: original_link, method: :post} %>
+		<%= button_to 'create_recipe', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating, image: image, ingredient_list: ingredient_string, link: link, time: time, method: :post} %>
   	</div>
   	
 </div>

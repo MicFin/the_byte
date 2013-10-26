@@ -1,4 +1,4 @@
-<%= form_for(@recipe) do |f| %>
+
 
 Name: <%= @recipe.name%></br>
 Rating: <%= @recipe.rating %></br>
@@ -9,19 +9,14 @@ Ingredients:</br>
 <%= ingredient %></br>
 <% end %>
 
-  <div class="diet-field">
-    <%#= f.label :cookbook %>
-    <%#=collection_check_boxes(:recipe, :cookbook_ids, Cookbook.all, :id, :name, prompt: true)%>
+  <div class="cookbook-field">
+    <%= @recipe.cookbook%>
   </div>
 
   <div class="note-field">
-    <%= f.label :Note%><br>
-    <%= f.text_field :note %>
+    <%= @recipe.note%><br>
   </div>
 
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
-<% end %>
+<div class="back">
+	<%= link_to "back to all cookbooks", cookbooks_url %>
+</div>

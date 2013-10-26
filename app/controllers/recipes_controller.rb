@@ -20,18 +20,18 @@ class RecipesController < ApplicationController
   end
 
   def create_from_search
-    @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:original_link])
+    @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time])
     if @recipe.save
       binding.pry
-      redirect_to @recipe 
+      render action: 'new' 
     else
       render action: 'new'
     end
   end
 
-  # def new
-  #   @recipe = Recipe.new
-  # end
+  def new
+    @recipe = @recipe
+  end
 
   def edit
   end
@@ -57,7 +57,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :image, :link, :ingredient_list, :rating, :note, :order_ids => [])
+    params.require(:recipe).permit(:name, :image, :link, :time, :ingredient_list, :rating, :note, :order_ids => [])
   end
 
 end

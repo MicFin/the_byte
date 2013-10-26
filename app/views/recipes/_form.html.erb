@@ -5,7 +5,8 @@ Rating: <%= params["rating"] %>
 <img src="<%= params["image"] %>"> 
 <a href="<%= params["link"] %>">View recipe</a>
 Ingredients:</br>
-<% params["ingredient_list"].each do |ingredient| %>
+<% ingredients = params["ingredient_list"].split("&") %>
+<% ingredients.each do |ingredient| %>
 <%= ingredient %>
 <% end %>
 
@@ -16,9 +17,9 @@ Ingredients:</br>
 <%= hidden_field_tag "link", params["link"] %>
 <%= hidden_field_tag "ingredient_list", params["ingredient_list"] %>
 
-  <div class="diet-field">
+  <div class="cookbook-field">
     <%= f.label :cookbook %>
-    <%=collection_check_boxes(:recipe, :cookbook_ids, Cookbook.order(:name), :id, :name, prompt: true)%>
+    <%=collection_select(:recipe, :cookbook_id, Cookbook.all, :id, :name, prompt: true)%>
   </div>
 
   <div class="note-field">

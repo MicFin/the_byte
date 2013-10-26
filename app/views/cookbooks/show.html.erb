@@ -2,6 +2,10 @@
 
 <h2><%= @cookbook.name %></h2>
 
+<% @cookbook.recipes.each do |recipe| %>
+<%= recipe.name%></br>
+<% end %>
+
 <div class="back">
 	<%= link_to "back to all cookbooks", cookbooks_url %>
 </div>

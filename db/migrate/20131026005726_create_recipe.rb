@@ -8,6 +8,7 @@ class CreateRecipe < ActiveRecord::Migration
       t.integer :rating
       t.integer :time
       t.text :note
+      t.integer :cookbook_id
     end
   end
 end
