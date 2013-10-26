@@ -3,8 +3,10 @@
 <div class ="recipe-result">
 
 	<h2> <%= recipe.name %> </h2>
+	<% found_recipe = Yummly.find("#{recipe.id}")%>
 
-	<%#<img src="<%=Yummly.find("#{recipe.id}").response["images"].first["hostedLargeUrl"]%>"/>
+	<% image = found_recipe.response["images"].first["hostedLargeUrl"] %>
+	<img src="<%=image%>"/>
 
 	<div class="cook-time"> 
 		Time: <%= (recipe.response["totalTimeInSeconds"]).to_i/60%>mins
@@ -15,22 +17,23 @@
 	</div>
 
 	<div class="recipe-_original-link">
-		<%#<a href="<%=Yummly.find("#{recipe.id}").response["source"]["sourceRecipeUrl"]%>">Source Link</a> 
+		<% original_link = found_recipe.response["source"]["sourceRecipeUrl"] %>
+		<a href="<%=original_link%>">View the recipe</a> 
 	</div>
 
 	<div class="ingredients-details">
-		<%# Yummly.find("#{recipe.id}").response["ingredientLines"].each do |line|%>
-	 	<%#= line %> </br> 
-	 	<%# end %>
+		<% ingredient_list = found_recipe.response["ingredientLines"] %>
+		<% ingredient_string = ingredient_list.join("&")%>
+		<% ingredient_list.each do |line|%>
+	 	<%= line %> </br> 
+	 	<% end %>
 	</div>
 
 	<div class="add-to-cookbook">
 
-		<%= button_to 'create_recipe', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating }, method: :post %>
-
-		<div class="actions">
+		<%= button_to 'create_recipe', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating, image: image, ingredient_list: ingredient_string, link: original_link, method: :post} %>
   	</div>
-  </div>
+  	
 </div>
 
 <% end %>

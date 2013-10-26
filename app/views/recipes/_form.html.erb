@@ -2,12 +2,23 @@
 
 Name: <%= params["name"] %></br>
 Rating: <%= params["rating"] %>
+<img src="<%= params["image"] %>"> 
+<a href="<%= params["link"] %>">View recipe</a>
+Ingredients:</br>
+<% params["ingredient_list"].each do |ingredient| %>
+<%= ingredient %>
+<% end %>
+
+
 <%= hidden_field_tag "name", params["name"] %>
 <%= hidden_field_tag "rating", params["rating"] %>
+<%= hidden_field_tag "image", params["image"] %>
+<%= hidden_field_tag "link", params["link"] %>
+<%= hidden_field_tag "ingredient_list", params["ingredient_list"] %>
 
   <div class="diet-field">
-    <%#= f.label :cookbook %>
-    <%#=collection_check_boxes(:recipe, :cookbook_ids, Cookbook.order(:name), :id, :name, prompt: true)%>
+    <%= f.label :cookbook %>
+    <%=collection_check_boxes(:recipe, :cookbook_ids, Cookbook.order(:name), :id, :name, prompt: true)%>
   </div>
 
   <div class="note-field">

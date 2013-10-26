@@ -20,10 +20,10 @@ class RecipesController < ApplicationController
   end
 
   def create_from_search
-    @recipe = Recipe.new(name: params[:name], rating: params[:rating])
+    @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:original_link])
     if @recipe.save
-      current_user.recipes << @recipe
-      redirect_to @show
+      binding.pry
+      redirect_to @recipe 
     else
       render action: 'new'
     end
