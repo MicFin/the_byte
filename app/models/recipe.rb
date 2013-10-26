@@ -1,8 +1,8 @@
 class Recipe < ActiveRecord::Base
-  belongs_to :cook
-  has_and_belongs_to_many :allergies
-  has_and_belongs_to_many :diets
+  has_many :orders
+  has_many :cookbooks, through: :orders
   validates :name, presence: true
-  validates :age, presence: true 
+  # validates :ingredient_list, presence: true 
+  # validates :link, presence: true 
   # add error  messagse for not valid inputs
 end

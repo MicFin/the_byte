@@ -8,7 +8,6 @@ class SearchesController < ApplicationController
 
   # captures search term/s for ingredient search
   @item_criteria = search_params
-binding.pry
   # identifies which members to include in search
   active_restrictions = params.map{ |k,v| v=='1' ? k : nil }.compact
 
@@ -68,11 +67,11 @@ binding.pry
 
  # returns search results as value of create
  @search_results = Yummly.search(@item_criteria, @yummly_search_criteria)
-binding.pry
  # renders page to the view/searches/show.html.erb
  render :show
 
  end
+
 
  private
 

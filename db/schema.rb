@@ -63,11 +63,12 @@ ActiveRecord::Schema.define(version: 20131026005726) do
 
   create_table "recipes", force: true do |t|
     t.string  "name"
-    t.text    "ingredients"
+    t.text    "ingredient_list"
     t.text    "image"
     t.text    "link"
     t.integer "rating"
     t.integer "time"
+    t.text    "note"
   end
 
   create_table "searches", force: true do |t|

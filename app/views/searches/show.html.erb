@@ -1,7 +1,8 @@
 <% @search_results.each do |recipe| %>
+
 <div class ="recipe-result">
 
-	<h2><%= recipe.name %></h2>
+	<h2> <%= recipe.name %> </h2>
 
 	<%#<img src="<%=Yummly.find("#{recipe.id}").response["images"].first["hostedLargeUrl"]%>"/>
 
@@ -9,7 +10,8 @@
 		Time: <%= (recipe.response["totalTimeInSeconds"]).to_i/60%>mins
 	</div>
 	<div class="rating">
-		Rating: <%= recipe.response["rating"] %>
+		<% rating = recipe.response["rating"] %>
+		Rating: <%= rating %>
 	</div>
 
 	<div class="recipe-_original-link">
@@ -22,6 +24,13 @@
 	 	<%# end %>
 	</div>
 
+	<div class="add-to-cookbook">
+
+		<%= button_to 'create_recipe', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating }, method: :post %>
+
+		<div class="actions">
+  	</div>
+  </div>
 </div>
 
 <% end %>

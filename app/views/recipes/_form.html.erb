@@ -1,0 +1,23 @@
+<%= form_for(@recipe) do |f| %>
+
+Name: <%= params["name"] %></br>
+Rating: <%= params["rating"] %>
+<%= hidden_field_tag "name", params["name"] %>
+<%= hidden_field_tag "rating", params["rating"] %>
+
+  <div class="diet-field">
+    <%#= f.label :cookbook %>
+    <%#=collection_check_boxes(:recipe, :cookbook_ids, Cookbook.order(:name), :id, :name, prompt: true)%>
+  </div>
+
+  <div class="note-field">
+    <%= f.label :Note%><br>
+    <%= f.text_field :note %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>
