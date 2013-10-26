@@ -1,0 +1,14 @@
+<h1>RightByte</h1>
+<h1>CookBooks Index</h1>
+
+<% if current_user.cookbooks && !current_user.cookbooks.empty? %>
+		<%current_user.cookbooks.each do |cookbook| %>
+		<ul>
+			<li><%= link_to cookbook.name, cookbook %></li>
+      <li><%= link_to 'Edit', edit_cookbook_path(cookbook) %></li>
+      <li><%= link_to 'Destroy', cookbook, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+		<%end%>
+	<% else%>
+		Add a cookbook and start saving your favorite recipes!!
+	<% end %>

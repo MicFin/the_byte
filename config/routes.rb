@@ -3,4 +3,5 @@ TheByte::Application.routes.draw do
   devise_for :users
   resources :members
   resources :searches
+  resources :cookbooks
 end

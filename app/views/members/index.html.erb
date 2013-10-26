@@ -1,12 +1,13 @@
 <h1>RightByte</h1>
 
 
-<h3><%= link_to "Search", new_search_path %> </h3>
+<h2><%= link_to "Search for recipes", new_search_path %> </h2>
 
 <%if current_user %>
 
+<div class="member-list">
+<h2>Who's at your table?</h2>
 <h3><%= link_to "Add new dinner guest", new_member_url %> </h3>
-<div class="member">
 	<% if current_user.members && !current_user.members.empty? %>
 		<%current_user.members.each do |member| %>
 		<ul>
@@ -18,11 +19,30 @@
 	<% else%>
 		Add people to your table
 	<% end %>
+</div>
+
+<div class="cookbook-list">
+<h2>Cookbooks</h2>
+<h3><%= link_to "Add new cookbook", new_cookbook_url %> </h3>
+	<% if current_user.cookbooks && !current_user.cookbooks.empty? %>
+		<%current_user.cookbooks.each do |cookbook| %>
+		<ul>
+			<li><%= link_to cookbook.name, cookbook %></li>
+      <li><%= link_to 'Edit', edit_cookbook_path(cookbook) %></li>
+      <li><%= link_to 'Destroy', cookbook, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+		<%end%>
+	<% else%>
+		Add a cookbook and start saving your favorite recipes!!
+	<% end %>
+</div>	
+
+<div class="not-logged-in">
 <% else %>
 Please log in to start cookin'
 <% end %>
-
 </div>
+
 
 <%#= link_to 'Search', edit_member_path(member) %>
 <br/>	
