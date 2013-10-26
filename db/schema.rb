@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025234525) do
+ActiveRecord::Schema.define(version: 20131026005726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20131025234525) do
     t.text     "xingredlist"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "recipes", force: true do |t|
+    t.string  "name"
+    t.text    "ingredients"
+    t.text    "image"
+    t.text    "link"
+    t.integer "rating"
+    t.integer "time"
   end
 
   create_table "searches", force: true do |t|
