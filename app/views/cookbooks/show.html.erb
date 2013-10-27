@@ -3,7 +3,7 @@
 <h2><%= @cookbook.name %></h2>
 
 <% @cookbook.recipes.each do |recipe| %>
-<%= recipe.name%></br>
+<%= link_to recipe.name, recipe %></br>
 <% end %>
 
 <div class="back">

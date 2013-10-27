@@ -10,7 +10,7 @@ Ingredients:</br>
 <% end %>
 
   <div class="cookbook-field">
-  Cookbook: <%= @recipe.cookbook%>
+  Cookbook: <%= link_to @recipe.cookbook.name, @recipe.cookbook %>
   </div>
 
   <div class="note-field">

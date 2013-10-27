@@ -10,25 +10,26 @@ class RecipesController < ApplicationController
   end
 
   def create
-    if @recipe.save
-      # current_user.recipes << @recipe
+    binding.pry
+    @recipe = Recipe.last
+    Cookbook.find((params["recipe"]["cookbook_id"]).to_i).recipes << @recipe
+
       redirect_to @recipe
-    else
-      render action: 'new' #new
-    end
+
   end
 
   def create_from_search
     @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time])
     if @recipe.save
-      if current_user.cookbooks.count < 1
-        current_user.cookbooks << Cookbook.new(name: "Recently Added")
-        Cookbook.find(:first).recipes << @recipe 
-      else
-        Cookbook.find(:first).recipes << @recipe 
-      end
-binding.pry
-      redirect_to @recipe
+    #   if current_user.cookbooks.count < 1
+    #     current_user.cookbooks << Cookbook.new(name: "Recently Added")
+    #     Cookbook.find(:first).recipes << @recipe 
+    #   else
+    #     Cookbook.find(:first).recipes << @recipe 
+    #   end
+# binding.pry
+#       redirect_to @recipe
+      render action: 'new'
     else
       render action: 'new'
     end
