@@ -35,6 +35,17 @@ class CookbooksController < ApplicationController
   end
 
   def destroy
+    long_lost_recipes = current_user.cookbooks.where(name: "Long Lost Recipes")
+    if long_lost_recipes != []
+      @cookbook.recipes.each do |recipe|
+        current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << recipe
+      end
+    else
+      current_user.cookbooks << Cookbook.new(name: "Long Lost Recipes")
+      @cookbook.recipes.each do |recipe|
+        current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << recipe
+      end
+    end
     @cookbook.destroy
     redirect_to cookbooks_url 
   end

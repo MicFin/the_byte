@@ -10,7 +10,6 @@ class RecipesController < ApplicationController
   end
 
   def create
-    binding.pry
     @recipe = Recipe.last
     Cookbook.find((params["recipe"]["cookbook_id"]).to_i).recipes << @recipe
 

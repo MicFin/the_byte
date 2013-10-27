@@ -36,3 +36,7 @@
   </div>
   
 <% end %>
+
+<% if @member.name != nil %>
+<%= link_to 'Remove Member', @member, method: :delete, data: { confirm: "Are you sure you want to remove #{@member.name} from your table?" } %>
+<% end %>

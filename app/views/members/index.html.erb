@@ -13,7 +13,6 @@
 		<ul>
 			<li><%= link_to member.name, member %></li>
       <li><%= link_to 'Edit', edit_member_path(member) %></li>
-      <li><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 		</ul>
 		<%end%>
 	<% else%>
@@ -29,7 +28,6 @@
 		<ul>
 			<li><%= link_to cookbook.name, cookbook %></li>
       <li><%= link_to 'Edit', edit_cookbook_path(cookbook) %></li>
-      <li><%= link_to 'Destroy', cookbook, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 		</ul>
 		<%end%>
 	<% else%>
