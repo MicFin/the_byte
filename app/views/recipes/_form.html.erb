@@ -1,4 +1,5 @@
 <%= form_for(@recipe) do |f| %>
+<%#= form_for @recipe, url: {controller: "recipes", action: "create_from_search"}, method: "post" do |f| %>
 
 Name: <%= params["name"] %></br>
 Rating: <%= params["rating"] %>

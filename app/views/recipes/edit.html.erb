@@ -1,1 +1,22 @@
-<%# only for adding a note
+
+
+Name: <%= @recipe.name%></br>
+Rating: <%= @recipe.rating %></br>
+<img src="<%= @recipe.image %>"> </br>
+<a href="<%=@recipe.link%>">View recipe</a></br>
+Ingredients:</br>
+<% @recipe.ingredient_list.split("&").each do |ingredient| %>
+<%= ingredient %></br>
+<% end %>
+
+  <div class="cookbook-field">
+  Cookbook: <%= @recipe.cookbook%>
+  </div>
+
+  <div class="note-field">
+  Note: <%= @recipe.note%><br>
+  </div>
+
+<div class="back">
+	<%= link_to "back to all cookbooks", cookbooks_url %>
+</div>
