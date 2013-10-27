@@ -53,11 +53,11 @@ class CookbooksController < ApplicationController
   private
 
   def set_cookbook
-  @cookbook = Cookbook.find(params[:id])
+    @cookbook = Cookbook.find(params[:id])
   end
 
   def cookbook_params
-    params.require(:cookbook).permit(:name, :user_id, :recipes => [])
+    params.require(:cookbook).permit(:name, :user_id, :id, recipes: [])
   end
 
 end

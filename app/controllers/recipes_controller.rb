@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.last
+    binding.pry
     Cookbook.find((params["recipe"]["cookbook_id"]).to_i).recipes << @recipe
 
       redirect_to @recipe
@@ -49,17 +50,6 @@ class RecipesController < ApplicationController
     # end
   end
 
-  def remove_from_cookbook
-    # binding.pry
-    # if @recipe.cookbook != current_user.cookbooks["Long Lost Recipes"]
-    #   @recipe.update(cookbook_id: current_user.cookbooks["Long Lost Recipes"].id)
-    #   binding.pry
-    # else
-    #   @recipe.delete
-    # end
-    # redirect_to cookbooks_url
-  end
-
   def new
     @recipe = @recipe
   end
@@ -80,14 +70,26 @@ class RecipesController < ApplicationController
       binding.pry      
       @recipe.destroy  
     else
-      if current_user.cookbooks.where(name: "Long Lost Recipes") != []
+      if current_user.cookbooks.where(name: "Long Lost Recipes").count >= 1
+        binding.pry
+        @recipe.update(cookbook_id: current_user.cookbooks.where(name: "Long Lost Recipes").first.id)
+        @recipe.save
         current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << @recipe
+        current_user.cookbooks.where(name: "Long Lost Recipes").first.save
+        binding.pry
       else
         current_user.cookbooks << Cookbook.new(name: "Long Lost Recipes")
-        current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << @recipe
+        binding.pry
+        @recipe.update(cookbook_id: current_user.cookbooks.last.id)
+        @recipe.save
+        current_user.cookbooks.last.recipes << @recipe
+        current_user.cookbooks.last.save
+        binding.pry
+        current_user.save
+        binding.pry
       end
     end
-    redirect_to cookbooks_url 
+    redirect_to members_url 
   end
 
 

@@ -12,15 +12,21 @@
   
 <% end %>
 
-<% if @cookbook.name != nil %>
+<% if @cookbook.id != nil %>
 <%= link_to 'Delete Cookbook', @cookbook, method: :delete, data: { confirm: "Are you sure you want to delete the cookbook \"#{@cookbook.name}\"?" } %>
 <% end %>
 </br>
 </br>
-Recipes </br>
-<% if @cookbook.recipes.count > 0 %>
-	<% @cookbook.recipes.each do |recipe| %>
-	<%= link_to recipe.name, recipe %>      
-  <%= link_to 'Remove', recipe, method: :delete, data: { confirm: "Are you sure you want to remove this recipe from the \"#{recipe.cookbook.name}\" cookbook?" } %>
-<% end %>
+
+
+<% if @cookbook.id != nil%>
+  <% if @cookbook.recipes.count > 0 %>
+    Recipes </br>
+	  <% @cookbook.recipes.each do |recipe| %>
+	  <%= link_to recipe.name, recipe %>     
+    <%= link_to 'Remove', recipe, method: :delete, data: { confirm: "Are you sure you want to remove \"#{recipe.name}\" from the \"#{recipe.cookbook.name}\" cookbook?" } %> </br>
+    <% end %>
+  <% else %>
+     Search for recipes to add to your cookbook!
+  <% end %>
 <% end %>
