@@ -15,3 +15,10 @@
 <% if @cookbook.name != nil %>
 <%= link_to 'Delete Cookbook', @cookbook, method: :delete, data: { confirm: "Are you sure you want to delete the cookbook \"#{@cookbook.name}\"? All recipes in the cookbook will be deleted. Please hit -cancel- to assign any recipes that you do not want to have deleted to another cookbook." } %>
 <% end %>
+
+<% if @cookbook.recipes.count > 0 %>
+	<% @cookbook.recipes.each do |recipe| %>
+	<%= link_to recipe.name, recipe %></br>
+  <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: "Are you sure you want to remove this recipe from the #{recipe.cookbook.name} cookbook?" } %>
+<% end %>
+<% end %>

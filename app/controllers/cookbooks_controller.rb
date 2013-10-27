@@ -13,7 +13,7 @@ class CookbooksController < ApplicationController
     @cookbook = Cookbook.new(cookbook_params)
     if @cookbook.save
       current_user.cookbooks << @cookbook
-      redirect_to @cookbook
+      redirect_to members_url
     else
       render action: 'new'
     end
@@ -49,7 +49,6 @@ class CookbooksController < ApplicationController
     @cookbook.destroy
     redirect_to cookbooks_url 
   end
-
 
   private
 

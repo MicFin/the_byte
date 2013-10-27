@@ -49,6 +49,17 @@ class RecipesController < ApplicationController
     # end
   end
 
+  def remove_from_cookbook
+    # binding.pry
+    # if @recipe.cookbook != current_user.cookbooks["Long Lost Recipes"]
+    #   @recipe.update(cookbook_id: current_user.cookbooks["Long Lost Recipes"].id)
+    #   binding.pry
+    # else
+    #   @recipe.delete
+    # end
+    # redirect_to cookbooks_url
+  end
+
   def new
     @recipe = @recipe
   end
@@ -65,7 +76,17 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe.destroy
+    if @recipe.cookbook == current_user.cookbooks.where(name: "Long Lost Recipes").first
+      binding.pry      
+      @recipe.destroy  
+    else
+      if current_user.cookbooks.where(name: "Long Lost Recipes") != []
+        current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << @recipe
+      else
+        current_user.cookbooks << Cookbook.new(name: "Long Lost Recipes")
+        current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << @recipe
+      end
+    end
     redirect_to cookbooks_url 
   end
 
@@ -73,7 +94,7 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-  @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def recipe_params
