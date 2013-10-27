@@ -31,8 +31,12 @@
 	</div>
 
 	<div class="add-to-cookbook">
+	 <% if current_user %>
+		<%= button_to 'Add to cookbook', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating, image: image, ingredient_list: ingredient_string, link: link, time: time, method: :post} %>
+	<% else %>
+	<%= link_to "Sign Up", new_user_registration_path %> to add recipes to your cook book!
+	<% end %>
 
-		<%= button_to 'create_recipe', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating, image: image, ingredient_list: ingredient_string, link: link, time: time, method: :post} %>
   	</div>
   	
 </div>

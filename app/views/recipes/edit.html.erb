@@ -1,22 +1,36 @@
+<%#= form_for(@recipe) do |f| %>
+<%= form_for @recipe, url: {controller: "recipes", action: "update"}, method: "patch" do |f| %>
 
-
-Name: <%= @recipe.name%></br>
+<h1>Name: <%= @recipe.name%></h1>
 Rating: <%= @recipe.rating %></br>
 <img src="<%= @recipe.image %>"> </br>
-<a href="<%=@recipe.link%>">View recipe</a></br>
+<a href="<%= @recipe.link%>">View recipe</a></br>
 Ingredients:</br>
-<% @recipe.ingredient_list.split("&").each do |ingredient| %>
-<%= ingredient %></br>
+<% ingredients = @recipe.ingredient_list.split("&") %>
+<% ingredients.each do |ingredient| %>
+<%= ingredient %> </br>
 <% end %>
 
+
+<%= hidden_field_tag "name", @recipe.name %>
+<%= hidden_field_tag "rating", @recipe.rating %>
+<%= hidden_field_tag "image", @recipe.image%>
+<%= hidden_field_tag "link", @recipe.link %>
+<%= hidden_field_tag "ingredient_list", @recipe.ingredient_list %>
+
   <div class="cookbook-field">
-  Cookbook: <%= @recipe.cookbook%>
+    <%= f.label :cookbook %>
+    <%=collection_select(:recipe, :cookbook_id, current_user.cookbooks.all, :id, :name, prompt: true)%>
   </div>
 
   <div class="note-field">
-  Note: <%= @recipe.note%><br>
+    <%= f.label :Note%><br>
+    <%= f.text_field :note %>
   </div>
 
-<div class="back">
-	<%= link_to "back to all cookbooks", cookbooks_url %>
-</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  
+<% end %>

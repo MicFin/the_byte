@@ -18,23 +18,26 @@ class SearchesController < ApplicationController
   @course_criteria = Array.new
 
   # combines filters from member profiles to search filter
-  active_restrictions.each do |restriction|
-    current_user.members.each do |member|
-      if member.name == restriction
-        aller = member.allergies
-        aller.each do |allergy|
-          @allergy_criteria << allergy.name
+
+    active_restrictions.each do |restriction|
+      if current_user
+      current_user.members.each do |member|
+        if member.name == restriction
+          aller = member.allergies
+          aller.each do |allergy|
+            @allergy_criteria << allergy.name
+          end
+          diet = member.diets
+          diet.each do |diet|
+            @diet_criteria << diet.name
+          end
+          # splits xingredlist from members into individual items and adds to search filter
+          @xingredlist_criteria << member.xingredlist.split(', ')
         end
-        diet = member.diets
-        diet.each do |diet|
-          @diet_criteria << diet.name
-        end
-        # splits xingredlist from members into individual items and adds to search filter
-        @xingredlist_criteria << member.xingredlist.split(', ')
       end
-    end
-    # adds any individually added allergy restrictions to search filter
-    Allergy.all.each do |allergy|
+      end
+      # adds any individually added allergy restrictions to search filter
+    Allergy.all.each do |allergy|   
       if allergy == restriction
         @allergy_criteria << restriction
       end

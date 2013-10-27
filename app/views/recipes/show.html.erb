@@ -1,6 +1,6 @@
 
 
-Name: <%= @recipe.name%></br>
+<h1><%= @recipe.name%></h1>
 Rating: <%= @recipe.rating %></br>
 <img src="<%= @recipe.image %>"> </br>
 <a href="<%=@recipe.link%>">View recipe</a></br>
@@ -14,9 +14,12 @@ Ingredients:</br>
   </div>
 
   <div class="note-field">
-  Note: <%= @recipe.note%><br>
+  Note: <%= @recipe.note %><br>
   </div>
 
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+
+  <%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' } %>
 <div class="back">
 	<%= link_to "back to all cookbooks", cookbooks_url %>
 </div>

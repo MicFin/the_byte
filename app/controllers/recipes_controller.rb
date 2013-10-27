@@ -18,7 +18,10 @@ class RecipesController < ApplicationController
   end
 
   def create_from_search
-    @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time])
+    if current_user.cookbooks.count == 0
+      current_user.cookbooks << Cookbook.new(name: "Temporary Cookbook")
+    end
+    @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time], note: params[:note])
     if @recipe.save
     #   if current_user.cookbooks.count < 1
     #     current_user.cookbooks << Cookbook.new(name: "Recently Added")
@@ -74,7 +77,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :image, :link, :time, :ingredient_list, :rating, :note, :order_id)
+    params.require(:recipe).permit(:name, :image, :link, :time, :ingredient_list, :rating, :note, :cookbook_id)
   end
 
 end
