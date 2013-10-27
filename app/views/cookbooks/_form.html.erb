@@ -1,5 +1,5 @@
 <%= form_for(@cookbook) do |f| %>
-
+<%= f.error_messages %>
   <div class="name-field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -13,12 +13,14 @@
 <% end %>
 
 <% if @cookbook.name != nil %>
-<%= link_to 'Delete Cookbook', @cookbook, method: :delete, data: { confirm: "Are you sure you want to delete the cookbook \"#{@cookbook.name}\"? All recipes in the cookbook will be deleted. Please hit -cancel- to assign any recipes that you do not want to have deleted to another cookbook." } %>
+<%= link_to 'Delete Cookbook', @cookbook, method: :delete, data: { confirm: "Are you sure you want to delete the cookbook \"#{@cookbook.name}\"?" } %>
 <% end %>
-
+</br>
+</br>
+Recipes </br>
 <% if @cookbook.recipes.count > 0 %>
 	<% @cookbook.recipes.each do |recipe| %>
-	<%= link_to recipe.name, recipe %></br>
-  <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: "Are you sure you want to remove this recipe from the #{recipe.cookbook.name} cookbook?" } %>
+	<%= link_to recipe.name, recipe %>      
+  <%= link_to 'Remove', recipe, method: :delete, data: { confirm: "Are you sure you want to remove this recipe from the \"#{recipe.cookbook.name}\" cookbook?" } %>
 <% end %>
 <% end %>

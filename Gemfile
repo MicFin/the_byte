@@ -10,6 +10,9 @@ gem 'pry'
 
 gem 'devise'
 
+# adds error messages
+gem "dynamic_form"
+
 # .env files
 gem 'dotenv-rails'
 

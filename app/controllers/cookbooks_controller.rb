@@ -47,7 +47,7 @@ class CookbooksController < ApplicationController
       end
     end
     @cookbook.destroy
-    redirect_to cookbooks_url 
+    redirect_to members_url 
   end
 
   private
