@@ -17,9 +17,14 @@ Ingredients:</br>
   Note: <%= @recipe.note %><br>
   </div>
 
-  <%= link_to 'Edit', edit_recipe_path(@recipe) %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %></br>
 
-  <%= link_to 'Destroy', @recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' } %>
+  <%= link_to 'Delete', @recipe, method: :delete, data: { confirm: 'Are you sure you want to delete this recipe?' } %>
+
 <div class="back">
 	<%= link_to "back to all cookbooks", cookbooks_url %>
+</div>
+
+<div class="back">
+	<%= link_to "back to your family and guests", members_url %>
 </div>
