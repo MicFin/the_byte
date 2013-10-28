@@ -145,6 +145,34 @@ input {
   font-size: 20px;
 }
 
+.recipe-result {
+  float: left;
+  width: 400px;
+  height: 800px;
+  overflow: scroll;
+}
 
+.recipe-result img {
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.recipe-name {
+text-align: center;
 
+}
+
+.search-tag {
+  color: #c0392b;;
+}
+
+.sign-up {
+  padding: 10px;
+  color: white;
+  background: #c0392b;
+  border-radius: 10px;
+}
+
+.rating {
+  margin-left: 60px;
+}

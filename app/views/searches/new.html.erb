@@ -1,6 +1,6 @@
 <%= form_tag(searches_path) do %>
+<h2>Who's at the table?</h2>
 <% if current_user %>
-	<h2>Who's at the table?</h2>
 	<div class="member-search-select">
 		<% if current_user.members.count > 0 %>
 			<% current_user.members.each do |member| %>
@@ -11,9 +11,11 @@
 			<%= link_to "Add friends and family", new_member_url %> to your table so you can filter by their preferences!
 		<% end %>
 	</div>
+<% else %>
+<%= link_to "Sign Up", new_user_registration_path %> to customize searches to who sits at your table!
 <% end %>
 
-<h2>Any other allergies? </h2>
+<h2>Any allergies? </h2>
 <div class="allergy-search-select">
 	<% Allergy.all.each do |allergy| %>
 	<%= check_box_tag(allergy.name) %>

@@ -2,7 +2,7 @@
 
 <div class ="recipe-result">
 
-	<h1> <%= recipe.name %> </h1>
+	<h1 class="recipe-name"> <%= recipe.name.truncate(25) %> </h1>
 	<% found_recipe = Yummly.find("#{recipe.id}")%>
 
 	<% image = found_recipe.response["images"].first["hostedLargeUrl"] %>
@@ -10,11 +10,10 @@
 
 	<div class="cook-time"> 
 		<% time = (recipe.response["totalTimeInSeconds"]).to_i / 60 %>
-		<h2>Time: <%= time %> mins</h2>
-	</div>
-	<div class="rating">
+		<h2>Time: <span class="search-tag"><%= time %> mins</span>
+	<span class="rating">
 		<% rating = recipe.response["rating"] %>
-		<h2>Rating: <%= rating %></h2>
+		Rating: <span class="search-tag"><%= rating %></span></span></h2>
 	</div>
 
 	<div class="recipe-_original-link">
@@ -27,7 +26,7 @@
 		<% ingredient_list = found_recipe.response["ingredientLines"] %>
 		<% ingredient_string = ingredient_list.join("&")%>
 		<% ingredient_list.each do |line|%>
-	 	<%= line %> </br> 
+	 	<%= line.truncate(40) %> </br> 
 	 	<% end %>
 	</div>
 
@@ -35,7 +34,9 @@
 	 <% if current_user %>
 		<%= button_to 'Add to cookbook', { controller: "recipes", action: "create_from_search", name: recipe.name, rating: rating, image: image, ingredient_list: ingredient_string, link: link, time: time, method: :post} %>
 	<% else %>
-	<%= link_to "Sign Up", new_user_registration_path %> to add recipes to your cook book!
+	</br>
+	</br>
+	<%= link_to "Sign Up", new_user_registration_path, class: "sign-up" %> to add recipes to your cook book!
 	<% end %>
 
   	</div>
