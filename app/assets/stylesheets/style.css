@@ -12,14 +12,15 @@
 }
 
 #nav-buttons {
-	right: 0;
+	margin-left: 400px;
 	margin-top: auto;
 	font-size: 30px;
 	color: white;
 	border: 10px;
 	display: inline;
 	position: absolute;
-	bottom:0;
+	top:0;
+	right: 0;
 }
 
 #nav-buttons:hover {
@@ -69,12 +70,16 @@ input {
 
 .fundiv:hover {
   background: #c0392b;
+  border: solid white 10px;
+  padding: 10px;
+  text-align: top;
 }
 
 
 .main-search:link {
   text-decoration: none;
   color: white;
+  line-height: 10px;
 }
 
 .main-search:hover {
@@ -87,8 +92,18 @@ input {
   color: white;
 }
 
+.logout{
+  text-align: center;
+  border-radius: 50px;
+  height: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 70px;
+  padding: 10px;
+
+}
+
 .logout:hover{
-  line-height: 60px;
   text-align: center;
   border-radius: 50px;
   height: 10px;
@@ -111,7 +126,6 @@ input {
   text-decoration: none;
   color: white;
 }
-
 
 
 
