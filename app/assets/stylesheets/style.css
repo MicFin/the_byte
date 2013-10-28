@@ -127,9 +127,23 @@ input {
   color: white;
 }
 
+.not-logged-in {
+  height: 150px;
+  width: 400px;
+  background: grey;
+  margin-left: auto;
+  margin-right: auto; 
+  margin-top: 100px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 10px;
+}
 
-
-
+.pitch {
+  font-family: Cursive;
+  color: white;
+  font-size: 20px;
+}
 
 
 
