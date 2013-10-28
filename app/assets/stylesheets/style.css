@@ -1,8 +1,11 @@
+/*Header log in, search*/
+
 #nav {
 	width: 100%;
 	background-color: #c0392b;
 	height: 100px;
 	position: relative;
+  margin-bottom: 50px;
 }
 
 .main-title {
@@ -25,35 +28,6 @@
 
 #nav-buttons:hover {
 	color: white;
-}
-
-.textfield {
-	height: 30px;
-	width: 30px;
-
-}
-input[type="submit"] {
-	width: auto;
-	font-size: 18px;
-	background-color: #c0392b;
-	font-weight: 500;
-	color: #FFF;
-	border: 1px;
-	border-radius: 10px;
-	margin-left: 20px;
-	text-transform: lowercase;
-}
-
-input {
-	font-family: Roboto;
-	font-size: 20px;
-	text-align: center;
-	font-weight: 100;
-	margin: 10px 10px;
-	color: #666;
-	background: #eee;
-	border: 1px solid #999;
-	padding: 15px;
 }
 
 .fundiv {
@@ -127,6 +101,38 @@ input {
   color: white;
 }
 
+/*Input fields*/
+.textfield {
+  height: 30px;
+  width: 30px;
+}
+
+input[type="submit"] {
+  width: auto;
+  font-size: 18px;
+  background-color: #c0392b;
+  font-weight: 500;
+  color: #FFF;
+  border: 1px;
+  border-radius: 10px;
+  margin-left: 20px;
+  text-transform: lowercase;
+}
+
+input {
+  font-family: Roboto;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 100;
+  margin: 10px 10px;
+  color: #666;
+  background: #eee;
+  border: 1px solid #999;
+  padding: 15px;
+}
+
+/*Landing page*/
+
 .not-logged-in {
   height: 150px;
   width: 400px;
@@ -139,11 +145,15 @@ input {
   border-radius: 10px;
 }
 
+
 .pitch {
   font-family: Cursive;
   color: white;
   font-size: 20px;
 }
+
+
+/*Search results page*/
 
 .recipe-result {
   float: left;
@@ -175,4 +185,10 @@ text-align: center;
 
 .rating {
   margin-left: 60px;
+}
+
+.ingredients-details {
+    background: #7bd17b;
+    border-radius: 10px;
+    width: 300px;
 }
