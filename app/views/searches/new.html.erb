@@ -1,11 +1,14 @@
-</br>
 <%= form_tag(searches_path) do %>
-<%if current_user %>
-<h2>Who's at the table?</h2>
+<% if current_user %>
+	<h2>Who's at the table?</h2>
 	<div class="member-search-select">
-		<% current_user.members.each do |member| %>
-		<%= check_box_tag(member.name) %>
-		<%= label_tag(member.name, "#{member.name}") %>
+		<% if current_user.members.count > 0 %>
+			<% current_user.members.each do |member| %>
+			<%= check_box_tag(member.name) %>
+			<%= label_tag(member.name, "#{member.name}") %>
+			<% end %>
+		<% else %>
+			<%= link_to "Add friends and family", new_member_url %> to your table so you can filter by their preferences!
 		<% end %>
 	</div>
 <% end %>
