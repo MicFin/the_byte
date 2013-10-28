@@ -1,11 +1,11 @@
 <%#= form_for(@recipe) do |f| %>
 <%= form_for @recipe, url: {controller: "recipes", action: "create"}, method: "post" do |f| %>
 
-Name: <%= params["name"] %></br>
-Rating: <%= params["rating"] %></br>
+<h1> <%= params["name"] %></h1>
+<h2>Rating: <%= params["rating"] %></h2>
 <img src="<%= params["image"] %>"> </br>
 <a href="<%= params["link"] %>">View recipe</a></br>
-Ingredients:</br></br>
+<h2>Ingredients:</h2>
 <% ingredients = params["ingredient_list"].split("&") %>
 <% ingredients.each do |ingredient| %>
 <%= ingredient %></br>
@@ -19,12 +19,12 @@ Ingredients:</br></br>
 <%= hidden_field_tag "ingredient_list", params["ingredient_list"] %>
 
   <div class="cookbook-field">
-    <%= f.label :cookbook %>
+    <h2><%= f.label :cookbook %></h2>
     <%=collection_select(:recipe, :cookbook_id, current_user.cookbooks.all, :id, :name, prompt: true)%>
   </div>
 
   <div class="note-field">
-    <%= f.label :Note%><br>
+   <h2> <%= f.label :Note%></h2>
     <%= f.text_field :note %>
   </div>
 

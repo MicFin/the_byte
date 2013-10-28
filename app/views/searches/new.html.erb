@@ -1,7 +1,7 @@
 </br>
 <%= form_tag(searches_path) do %>
-
 <%if current_user %>
+<h2>Who's at the table?</h2>
 	<div class="member-search-select">
 		<% current_user.members.each do |member| %>
 		<%= check_box_tag(member.name) %>
@@ -10,6 +10,7 @@
 	</div>
 <% end %>
 
+<h2>Any other allergies? </h2>
 <div class="allergy-search-select">
 	<% Allergy.all.each do |allergy| %>
 	<%= check_box_tag(allergy.name) %>
@@ -17,6 +18,7 @@
 	<% end %>
 </div>
 
+<h2>Following a diet? </h2>
 <div class="diet-search-select">
 	<% Diet.all.each do |diet| %>
 	<%= check_box_tag(diet.name) %>
@@ -24,6 +26,7 @@
 	<% end %>
 </div>
 
+<h2>What meal are you preparing? </h2>
 <div class="course-search-select">
 	<% $courses = ["Main Dishes", "Desserts", "Side Dishes", "Lunch and Snacks", "Appetizers", "Salads", "Breads", "Breakfast and Soups", "Beverages", "Condiments and Sauces", "Cocktails"] %>
 	<% $courses.each do |course| %>
@@ -32,7 +35,7 @@
 	<% end %>
 </div>
 
-<%= text_field_tag 'search' %>
+<%= text_field_tag 'search'%>
 
-<div><%= submit_tag 'Search' %></div>
+<%= submit_tag 'Search' %></div>
 <% end -%>

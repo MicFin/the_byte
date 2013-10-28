@@ -1,32 +1,32 @@
 <%= form_for(@member) do |f| %>
 <%= f.error_messages %>
   <div class="name-field">
-    <%= f.label :name %><br>
+   <h2> <%= f.label :name %></h2>
     <%= f.text_field :name %>
   </div>
 
   <div class="age-field">
-    <%= f.label :age %><br>
+    <h2><%= f.label :age %></h2>
     <%= f.number_field :age, min: 1, max: 130 %>
   </div>
 
  <div class="gender-field">
-    <%= f.label :gender %>
+  <h2><%= f.label :gender %></h2>
     <%=f.select( :gender, options_for_select([["M", "Male"],["F","Female"]]))%>
   </div>
 
   <div class="allergy-field">
-    <%= f.label :allergy %>
+  <h2>  <%= f.label :allergy %></h2>
     <%=collection_check_boxes(:member, :allergy_ids, Allergy.order(:name), :id, :name, prompt: true)%>
   </div>
 
   <div class="diet-field">
-    <%= f.label :diet %>
+   <h2> <%= f.label :diet %> </h2>
     <%=collection_check_boxes(:member, :diet_ids, Diet.order(:name), :id, :name, prompt: true)%>
   </div>
 
   <div class="excluded-field">
-    <%= f.label :Excluded_Ingredients%><br>
+   <h2> <%= f.label :Excluded_Ingredients%></h2>
     <%= f.text_field :xingredlist %>
   </div>
 

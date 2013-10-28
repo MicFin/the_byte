@@ -11,7 +11,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.last
-    binding.pry
     Cookbook.find((params["recipe"]["cookbook_id"]).to_i).recipes << @recipe
 
       redirect_to @recipe
@@ -21,33 +20,14 @@ class RecipesController < ApplicationController
   def create_from_search
     if current_user.cookbooks.count == 0
       current_user.cookbooks << Cookbook.new(name: "Temporary Cookbook")
+      binding.pry
     end
     @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time], note: params[:note])
     if @recipe.save
-    #   if current_user.cookbooks.count < 1
-    #     current_user.cookbooks << Cookbook.new(name: "Recently Added")
-    #     Cookbook.find(:first).recipes << @recipe 
-    #   else
-    #     Cookbook.find(:first).recipes << @recipe 
-    #   end
-# binding.pry
-#       redirect_to @recipe
       render action: 'new'
     else
       render action: 'new'
     end
-
-    # if params[:cookbook_id] != nil
-    #   @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time], cookbook_id: params[:cookbook_id], note: params[:note])
-    #   if @recipe.save
-    #     redirect to @recipe 
-    #   else
-    #     render action: 'new'
-    #   end
-    # else
-    #   @recipe = Recipe.new(name: params[:name], rating: params[:rating], image: params[:image], ingredient_list: params[:ingredient_list], link: params[:link], time: params[:time])
-    #   render action: 'new'
-    # end
   end
 
   def new
@@ -66,27 +46,21 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    if @recipe.cookbook == current_user.cookbooks.where(name: "Long Lost Recipes").first
-      binding.pry      
+    if @recipe.cookbook == current_user.cookbooks.where(name: "Long Lost Recipes").first  
       @recipe.destroy  
     else
       if current_user.cookbooks.where(name: "Long Lost Recipes").count >= 1
-        binding.pry
         @recipe.update(cookbook_id: current_user.cookbooks.where(name: "Long Lost Recipes").first.id)
         @recipe.save
         current_user.cookbooks.where(name: "Long Lost Recipes").first.recipes << @recipe
         current_user.cookbooks.where(name: "Long Lost Recipes").first.save
-        binding.pry
       else
         current_user.cookbooks << Cookbook.new(name: "Long Lost Recipes")
-        binding.pry
         @recipe.update(cookbook_id: current_user.cookbooks.last.id)
         @recipe.save
         current_user.cookbooks.last.recipes << @recipe
         current_user.cookbooks.last.save
-        binding.pry
         current_user.save
-        binding.pry
       end
     end
     redirect_to members_url 
